@@ -153,6 +153,13 @@ const mountPost = (post:Post) => {
     readMore.classList.add("card-btn");
     readMore.innerText = "Read more";
     // TODO inserir eventListener com o id do post
+    let dataURL = new URLSearchParams();
+    readMore.addEventListener("click", () => {
+        dataURL.delete("postId");
+        dataURL.append("postId", String(post.id));
+
+        window.location.href = "post_details.html?" + dataURL.toString();
+    });
 
     divCategories.appendChild(document.createComment("firstLink"));
     divCategories.appendChild(firstLink);
@@ -240,29 +247,5 @@ class Post {
     }
     set writerSet(writer: User) {
         this.writer = writer;
-    }
-}
-
-class PostComment {
-    id!:number;
-    title: string;
-    body: string;
-    private _writer!: User;
-    private _post: Post;
-
-    get writer(): User {
-        return this._writer;
-    }
-
-    set writer(value: User) {
-        this._writer = value;
-    }
-
-    get post(): Post {
-        return this._post;
-    }
-
-    set post(value: Post) {
-        this._post = value;
     }
 }
