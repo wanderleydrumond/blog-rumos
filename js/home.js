@@ -223,4 +223,23 @@ class Post {
         this.writer = writer;
     }
 }
+class PostComment {
+    id;
+    title;
+    body;
+    _writer;
+    _post;
+    get writer() {
+        return this._writer;
+    }
+    set writer(value) {
+        this._writer = value;
+    }
+    get post() {
+        return this._post;
+    }
+    set post(value) {
+        this._post = value;
+    }
+}
 //# sourceMappingURL=home.js.map

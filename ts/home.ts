@@ -242,3 +242,27 @@ class Post {
         this.writer = writer;
     }
 }
+
+class PostComment {
+    id!:number;
+    title: string;
+    body: string;
+    private _writer!: User;
+    private _post: Post;
+
+    get writer(): User {
+        return this._writer;
+    }
+
+    set writer(value: User) {
+        this._writer = value;
+    }
+
+    get post(): Post {
+        return this._post;
+    }
+
+    set post(value: Post) {
+        this._post = value;
+    }
+}
