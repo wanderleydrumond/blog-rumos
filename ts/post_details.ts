@@ -26,13 +26,24 @@ class PostComment {
 
 // BLOCK Getting information from API
 
-let globalPost;
 const getPostById = ():void => {
     fetch(apiURLBaseComments + 'posts/' + postId)
         .then((response) => response.json())
         .then((post) => {
-            globalPost = post;
-            console.log("globalPost", globalPost);
+            document.getElementById("post-title").innerText = post.title;
+            document.getElementById("post-body").innerText = post.body;
+            const postImage = document.getElementById("post-image") as HTMLImageElement;
+            postImage.src = `../images/insta-post-${post.id - 1}.png`;
+            fetch(apiURLBaseComments + 'users')
+                .then((response) => response.json())
+                .then((users) => {
+
+                    users.forEach((userElement: { id: number, name: string; }) => {
+                        if (userElement.id === post.userId) {
+                            document.getElementById("writer-name").innerText = userElement.name;
+                        }
+                    });
+                });
         });
 }
 
@@ -46,7 +57,7 @@ const getCommentsByPostId = ():void => {
                 comment.pictureWriter = `../images/author-${index}.png`;
                 globalComments.push(comment);
             });
-            console.log("globalComment", globalComments);
+
             globalComments.forEach((commentElement: PostComment) => mountComment(commentElement));
         });
 }
@@ -55,7 +66,7 @@ const getCommentsByPostId = ():void => {
 
 const divComments = document.getElementsByClassName("wrapper")[0] as HTMLDivElement;
 const mountComment = (comment:PostComment) => {
-    console.log("comment", comment)
+
     // <div class="box">
     const divComment = document.createElement("div");
     divComment.classList.add("box");
@@ -96,3 +107,7 @@ const mountComment = (comment:PostComment) => {
 
     divComments.appendChild(divComment);
 }
+
+document.getElementById("back-button").addEventListener("click", () => {
+    window.location.href = "home.html";
+});

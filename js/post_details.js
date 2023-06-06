@@ -20,13 +20,23 @@ class PostComment {
     }
 }
 // BLOCK Getting information from API
-let globalPost;
 const getPostById = () => {
     fetch(apiURLBaseComments + 'posts/' + postId)
         .then((response) => response.json())
         .then((post) => {
-        globalPost = post;
-        console.log("globalPost", globalPost);
+        document.getElementById("post-title").innerText = post.title;
+        document.getElementById("post-body").innerText = post.body;
+        const postImage = document.getElementById("post-image");
+        postImage.src = `../images/insta-post-${post.id - 1}.png`;
+        fetch(apiURLBaseComments + 'users')
+            .then((response) => response.json())
+            .then((users) => {
+            users.forEach((userElement) => {
+                if (userElement.id === post.userId) {
+                    document.getElementById("writer-name").innerText = userElement.name;
+                }
+            });
+        });
     });
 };
 let globalComments = [];
@@ -39,14 +49,12 @@ const getCommentsByPostId = () => {
             comment.pictureWriter = `../images/author-${index}.png`;
             globalComments.push(comment);
         });
-        console.log("globalComment", globalComments);
         globalComments.forEach((commentElement) => mountComment(commentElement));
     });
 };
 // BLOCK Mounting elements
 const divComments = document.getElementsByClassName("wrapper")[0];
 const mountComment = (comment) => {
-    console.log("comment", comment);
     // <div class="box">
     const divComment = document.createElement("div");
     divComment.classList.add("box");
@@ -83,4 +91,7 @@ const mountComment = (comment) => {
     divComment.appendChild(divContent);
     divComments.appendChild(divComment);
 };
+document.getElementById("back-button").addEventListener("click", () => {
+    window.location.href = "home.html";
+});
 //# sourceMappingURL=post_details.js.map
