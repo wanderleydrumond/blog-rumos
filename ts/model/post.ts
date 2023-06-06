@@ -1,23 +1,22 @@
 import User from "./user";
 
-export class Post {
-    _id: number;
-    _title: string;
-    _body: string;
-    _image: string;
-    _writer: User;
+export default class Post {
+    id!: number;
+    title!: string;
+    body!: string;
+    image?: string;
+    private writer!: User;
 
-    constructor(id: number, title: string, body: string, image: string) {
-        this._id = id;
-        this._title = title;
-        this._body = body;
-        this._image = image;
+    constructor(id: number, title: string, body: string) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
     }
 
-    get writer() {
-        return this._writer;
+    get writerGet() {
+        return this.writer;
     }
-    set writer(writer) {
-        this._writer = writer;
+    set writerSet(writer: User) {
+        this.writer = writer;
     }
 }

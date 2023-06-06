@@ -3,6 +3,7 @@ export default class User {
     name!: string;
     username!: string;
     email!: string;
+    picture!: string;
 
     constructor (id: number, name: string, username: string, email: string) {
         this.id = id;

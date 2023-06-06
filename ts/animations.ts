@@ -47,29 +47,29 @@ window.addEventListener("scroll", () => {
 
 // BLOCK SLIDER
 
-const slider = document.querySelector("[data-slider]");
-const sliderContainer = document.querySelector("[data-slider-container]");
-const sliderPrevBtn = document.querySelector("[data-slider-prev]");
-const sliderNextBtn = document.querySelector("[data-slider-next]");
+const slider = document.getElementById("data-slider");
+const sliderContainer = document.getElementById("data-slider-container");
+const sliderPrevBtn = document.getElementById("data-slider-prev");
+const sliderNextBtn = document.getElementById("data-slider-next");
 
 let totalSliderVisibleItems = Number(getComputedStyle(slider!).getPropertyValue("--slider-items"));
 let totalSlidableItems = sliderContainer?.childElementCount! - totalSliderVisibleItems;
 
-let currentSlidePos = 0;
+let currentSlidePosition = 0;
 
 const moveSliderItem = () => {
-    sliderContainer!.style.transform = `translateX(-${sliderContainer?.children[currentSlidePos].offsetLeft}px)`;
+    sliderContainer!.style.transform = `translateX(-${sliderContainer?.children[currentSlidePosition].offsetLeft}px)`;
 }
 
 // BLOCK NEXT SLIDE
 
 const slideNext = () => {
-    const slideEnd = currentSlidePos >= totalSlidableItems;
+    const slideEnd = currentSlidePosition >= totalSlidableItems;
 
     if (slideEnd) {
-        currentSlidePos = 0;
+        currentSlidePosition = 0;
     } else {
-        currentSlidePos++;
+        currentSlidePosition++;
     }
 
     moveSliderItem();
@@ -80,10 +80,10 @@ sliderNextBtn?.addEventListener("click", slideNext);
 // BLOCK PREVIOUS SLIDE
 
 const slidePrev = () => {
-    if (currentSlidePos <= 0) {
-        currentSlidePos = totalSlidableItems;
+    if (currentSlidePosition <= 0) {
+        currentSlidePosition = totalSlidableItems;
     } else {
-        currentSlidePos--;
+        currentSlidePosition--;
     }
 
     moveSliderItem();

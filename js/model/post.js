@@ -1,23 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Post = void 0;
 var Post = /** @class */ (function () {
-    function Post(id, title, body, image) {
-        this._id = id;
-        this._title = title;
-        this._body = body;
-        this._image = image;
+    function Post(id, title, body) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
     }
-    Object.defineProperty(Post.prototype, "writer", {
+    Object.defineProperty(Post.prototype, "writerGet", {
         get: function () {
-            return this._writer;
+            return this.writer;
         },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Post.prototype, "writerSet", {
         set: function (writer) {
-            this._writer = writer;
+            this.writer = writer;
         },
         enumerable: false,
         configurable: true
     });
     return Post;
 }());
-exports.Post = Post;
+exports.default = Post;
