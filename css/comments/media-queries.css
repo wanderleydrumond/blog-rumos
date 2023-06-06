@@ -1,0 +1,11 @@
+@media (max-width: 1045px) {
+    .wrapper .box{
+        width: calc(50% - 10px);
+        margin: 10px 0;
+    }
+}
+@media (max-width: 702px) {
+    .wrapper .box{
+        width: 100%;
+    }
+}

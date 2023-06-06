@@ -1,6 +1,9 @@
 :root {
     /* BLOCK COLOURS */
 
+    /*BLOCK selection*/
+    --selection: #8E44AD;
+
     /* BLOCK Background */
     --bg-wild-blue-yonder: hsla(216, 33%, 68%, 1);
     --bg-carolina-blue: hsla(199, 89%, 49%, 1);
@@ -79,4 +82,7 @@
     --transition-2: 0.5s ease;
     --cubic-in: cubic-bezier(0.51, 0.03, 0.64, 0.28);
     --cubic-out: cubic-bezier(0.05, 0.83, 0.52, 0.97);
+
+    /*BLOCK comments*/
+    --light-blue: #17A2B8;
 }

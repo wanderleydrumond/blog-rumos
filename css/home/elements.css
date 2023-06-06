@@ -80,3 +80,7 @@ body.nav-active {
     background-color: var(--bg-carolina-blue);
     border-radius: var(--radius-pill);
 }
+
+::selection{
+    background: var(--selection);
+}
