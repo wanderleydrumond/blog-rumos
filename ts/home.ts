@@ -1,5 +1,5 @@
-import User from './model/user';
-import Post from './model/post';
+/*import User from './model/user';
+import Post from './model/post';*/
 
 // BLOCK Getting information from API
 window.onload = () => {
@@ -18,11 +18,9 @@ const getPosts = ():void => {
     fetch(apiURLBase + 'posts')
         .then((response) => response.json())
         .then((posts) => {
-            for (let index = 0; index < 20; index++) {
+            for (let index = 0; index < 10; index++) {
                 let postElement = new Post(posts[index].id, posts[index].title, posts[index].body);
                 postElement.image = `../images/insta-post-${index}.png`;
-                console.log('userList em getPosts', userList);
-                console.log(postElement);
                 let abort: boolean = false;
                 for (let i = 0; i < userList.length && !abort; i++){
                     abort = false;
@@ -34,7 +32,7 @@ const getPosts = ():void => {
                 }
                 postList.push(postElement);
             }
-            // console.log('postList', postList);
+            console.log('postList', postList);
             postList.forEach(postElement => mountPost(postElement));
         });
 }
@@ -52,7 +50,7 @@ const getUsers = ():void => {
                 user.picture = `../images/author-${index}.png`;
                 userList.push(user);
             });
-            // console.log('userList', userList);
+            console.log('userList', userList);
         });
     setTimeout(() => {
         getPosts();
@@ -176,15 +174,19 @@ const mountPost = (post:Post) => {
     cardContent.appendChild(postTitle);
     cardContent.appendChild(divProfileAndReadMore);
 
+    imageHolder.appendChild(postImage);
+
+    featureCard.appendChild(imageHolder);
+    featureCard.appendChild(cardContent);
+
     postElement.appendChild(featureCard);
-    postElement.appendChild(cardContent);
 
     featureList.appendChild(postElement);
 };
 
 // BLOCK Classes
 // TODO TO BE DELETED?
-/*class User {
+class User {
     id!: number;
     name!: string;
     username!: string;
@@ -197,9 +199,8 @@ const mountPost = (post:Post) => {
         this.username = username;
         this.email = email;
     }
-}*/
+}
 
-/*
 class Post {
     id!: number;
     title!: string;
@@ -219,4 +220,4 @@ class Post {
     set writerSet(writer: User) {
         this.writer = writer;
     }
-}*/
+}
