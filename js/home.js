@@ -79,7 +79,7 @@ const mountPost = (post) => {
     cardContent.classList.add("card-content");
     // <div class="card-wrapper">
     const divCategoriesAndTime = document.createElement("div");
-    divCategoriesAndTime.classList.add("card-content");
+    divCategoriesAndTime.classList.add("card-wrapper");
     // <div class="card-tag">
     const divCategories = document.createElement("div");
     divCategories.classList.add("card-tag");
@@ -106,6 +106,7 @@ const mountPost = (post) => {
     // <span class="span">3 mins read</span>
     const timeMessage = document.createElement("span");
     timeMessage.classList.add("span");
+    timeMessage.innerText = "3 mins read";
     // <h3 class="headline headline-3"></h3>
     const postTitle = document.createElement("h3");
     postTitle.classList.add("headline");
@@ -146,26 +147,47 @@ const mountPost = (post) => {
     readMore.classList.add("card-btn");
     readMore.innerText = "Read more";
     // TODO inserir eventListener com o id do post
+    divCategories.appendChild(document.createComment("firstLink"));
     divCategories.appendChild(firstLink);
+    divCategories.appendChild(document.createComment("secondLink"));
     divCategories.appendChild(secondLink);
+    divTime.appendChild(document.createComment("clockIcon"));
     divTime.appendChild(clockIcon);
+    divTime.appendChild(document.createComment("timeMessage"));
     divTime.appendChild(timeMessage);
+    divCategoriesAndTime.appendChild(document.createComment("divCategories"));
     divCategoriesAndTime.appendChild(divCategories);
+    divCategoriesAndTime.appendChild(document.createComment("divTime"));
     divCategoriesAndTime.appendChild(divTime);
+    postTitle.appendChild(document.createComment("postLink"));
     postTitle.appendChild(postLink);
+    divCreatorInformations.appendChild(document.createComment("creatorName"));
     divCreatorInformations.appendChild(creatorName);
+    divCreatorInformations.appendChild(document.createComment("creationDate"));
     divCreatorInformations.appendChild(creationDate);
+    divProfile.appendChild(document.createComment("creatorPicture"));
     divProfile.appendChild(creatorPicture);
+    divProfile.appendChild(document.createComment("divCreatorInformations"));
     divProfile.appendChild(divCreatorInformations);
+    divProfileAndReadMore.appendChild(document.createComment("divProfile"));
     divProfileAndReadMore.appendChild(divProfile);
+    divProfileAndReadMore.appendChild(document.createComment("readMore"));
     divProfileAndReadMore.appendChild(readMore);
+    cardContent.appendChild(document.createComment("divCategoriesAndTime"));
     cardContent.appendChild(divCategoriesAndTime);
+    cardContent.appendChild(document.createComment("postTitle"));
     cardContent.appendChild(postTitle);
+    cardContent.appendChild(document.createComment("divProfileAndReadMore"));
     cardContent.appendChild(divProfileAndReadMore);
+    imageHolder.appendChild(document.createComment("postImage"));
     imageHolder.appendChild(postImage);
+    featureCard.appendChild(document.createComment("imageHolder"));
     featureCard.appendChild(imageHolder);
+    featureCard.appendChild(document.createComment("cardContent"));
     featureCard.appendChild(cardContent);
+    postElement.appendChild(document.createComment("featureCard"));
     postElement.appendChild(featureCard);
+    featureList.appendChild(document.createComment("postElement"));
     featureList.appendChild(postElement);
 };
 // BLOCK Classes
