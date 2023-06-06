@@ -6,6 +6,7 @@ window.onload = () => {
     getUsers();
 }
 
+
 let postList: Array<Post> = [];
 let userList: Array<User> = [];
 const apiURLBase = 'https://jsonplaceholder.typicode.com/';
@@ -188,7 +189,7 @@ const mountPost = (post:Post) => {
 };
 
 // BLOCK Classes
-
+// TODO TO BE DELETED
 /*class User {
     id!: number;
     name!: string;

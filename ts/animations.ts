@@ -58,7 +58,8 @@ let totalSlidableItems = sliderContainer?.childElementCount! - totalSliderVisibl
 let currentSlidePosition = 0;
 
 const moveSliderItem = () => {
-    sliderContainer!.style.transform = `translateX(-${sliderContainer?.children[currentSlidePosition].offsetLeft}px)`;
+    const auxiliary = sliderContainer?.children[currentSlidePosition] as HTMLElement;
+    sliderContainer!.style.transform = `translateX(-${auxiliary.offsetLeft}px)`;
 }
 
 // BLOCK NEXT SLIDE

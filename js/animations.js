@@ -38,35 +38,36 @@ window.addEventListener("scroll", function () {
     }
 });
 // BLOCK SLIDER
-var slider = document.querySelector("[data-slider]");
-var sliderContainer = document.querySelector("[data-slider-container]");
-var sliderPrevBtn = document.querySelector("[data-slider-prev]");
-var sliderNextBtn = document.querySelector("[data-slider-next]");
+var slider = document.getElementById("data-slider");
+var sliderContainer = document.getElementById("data-slider-container");
+var sliderPrevBtn = document.getElementById("data-slider-prev");
+var sliderNextBtn = document.getElementById("data-slider-next");
 var totalSliderVisibleItems = Number(getComputedStyle(slider).getPropertyValue("--slider-items"));
 var totalSlidableItems = (sliderContainer === null || sliderContainer === void 0 ? void 0 : sliderContainer.childElementCount) - totalSliderVisibleItems;
-var currentSlidePos = 0;
+var currentSlidePosition = 0;
 var moveSliderItem = function () {
-    sliderContainer.style.transform = "translateX(-".concat(sliderContainer === null || sliderContainer === void 0 ? void 0 : sliderContainer.children[currentSlidePos].offsetLeft, "px)");
+    var auxiliary = sliderContainer === null || sliderContainer === void 0 ? void 0 : sliderContainer.children[currentSlidePosition];
+    sliderContainer.style.transform = "translateX(-".concat(auxiliary.offsetLeft, "px)");
 };
 // BLOCK NEXT SLIDE
 var slideNext = function () {
-    var slideEnd = currentSlidePos >= totalSlidableItems;
+    var slideEnd = currentSlidePosition >= totalSlidableItems;
     if (slideEnd) {
-        currentSlidePos = 0;
+        currentSlidePosition = 0;
     }
     else {
-        currentSlidePos++;
+        currentSlidePosition++;
     }
     moveSliderItem();
 };
 sliderNextBtn === null || sliderNextBtn === void 0 ? void 0 : sliderNextBtn.addEventListener("click", slideNext);
 // BLOCK PREVIOUS SLIDE
 var slidePrev = function () {
-    if (currentSlidePos <= 0) {
-        currentSlidePos = totalSlidableItems;
+    if (currentSlidePosition <= 0) {
+        currentSlidePosition = totalSlidableItems;
     }
     else {
-        currentSlidePos--;
+        currentSlidePosition--;
     }
     moveSliderItem();
 };

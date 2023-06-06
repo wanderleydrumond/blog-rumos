@@ -177,6 +177,7 @@ var mountPost = function (post) {
     featureList.appendChild(postElement);
 };
 // BLOCK Classes
+// TODO TO BE DELETED
 /*class User {
     id!: number;
     name!: string;
