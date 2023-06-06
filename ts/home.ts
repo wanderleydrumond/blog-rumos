@@ -21,12 +21,6 @@ const getPosts = ():void => {
             for (let index = 0; index < 20; index++) {
                 let postElement = new Post(posts[index].id, posts[index].title, posts[index].body);
                 postElement.image = `../images/insta-post-${index}.png`;
-                // BUG Tentei atualizar a lib mas não funcionou (https://stackoverflow.com/questions/31388787/doesnt-find-exist-on-any-kind-of-typescript-or-javascript-array/50954862#50954862)
-                /*let writer = userList.find(userElement => userElement.id === posts[index].userId);
-
-                if (writer) {
-                    postElement.writerSet = writer;
-                }*/
                 console.log('userList em getPosts', userList);
                 console.log(postElement);
                 let abort: boolean = false;
@@ -189,7 +183,7 @@ const mountPost = (post:Post) => {
 };
 
 // BLOCK Classes
-// TODO TO BE DELETED
+// TODO TO BE DELETED?
 /*class User {
     id!: number;
     name!: string;
