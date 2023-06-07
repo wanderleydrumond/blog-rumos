@@ -108,6 +108,8 @@ const mountComment = (comment:PostComment) => {
     divComments.appendChild(divComment);
 }
 
+// BLOCK listeners
+
 document.getElementById("back-button").addEventListener("click", () => {
     window.location.href = "home.html";
 });

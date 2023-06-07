@@ -91,6 +91,7 @@ const mountComment = (comment) => {
     divComment.appendChild(divContent);
     divComments.appendChild(divComment);
 };
+// BLOCK listeners
 document.getElementById("back-button").addEventListener("click", () => {
     window.location.href = "home.html";
 });
